@@ -11,8 +11,7 @@
 -------------------------------------------------------------
 
 # Model selection
-## Cross-validation 
-### Model hyperparameters 
+## Model hyperparameters 
 - J: number of projection scores
 - L: number of layers
 - p: neurons per layer (uniform for all layers)
