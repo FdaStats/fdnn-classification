@@ -19,6 +19,6 @@
 - s: sparsity parameter (use dropout)
 - B: max norm of the network weights
 - Batch Size: data dependent
-- Epoch number: 0.25
+- Epoch number: data 
 - Activation function: ReLU
 - Optimizer: Adam 
