@@ -2,7 +2,7 @@
 ------------------------------------------------
 
 # Fourier basis
--
+- Given one functional curve $X(t)$,
 -------------------------------------------------------
 
 # Model input and output
