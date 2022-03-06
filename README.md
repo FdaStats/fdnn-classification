@@ -2,7 +2,7 @@
 ------------------------------------------------
 
 # Fourier basis
-- Given one functional curve $X(t)$,
+- Given one functional curve ![first equation](https://latex.codecogs.com/gif.latex?X%28t%29), using Fourier basis to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots%2C).
 -------------------------------------------------------
 
 # Model input and output
