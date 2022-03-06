@@ -1,8 +1,8 @@
 # Deep Neural Network Classifier for Multi-dimensional Functional Data
 ------------------------------------------------
 
-# Projection scores
-- Given one functional curve ![first equation](https://latex.codecogs.com/gif.latex?X%28t%29), using Fourier basis to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots).
+# Functional curve pre-processing
+- Given one functional curve ![first equation](https://latex.codecogs.com/gif.latex?X%28t%29), first use basis functions to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots).
 -------------------------------------------------------
 
 # Model input and output
