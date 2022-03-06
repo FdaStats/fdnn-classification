@@ -2,13 +2,11 @@
 ------------------------------------------------
 
 # Fourier basis
-- Given one functional curve ![first equation](https://latex.codecogs.com/gif.latex?X%28t%29), using Fourier basis to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots%2C).
+- Given one functional curve ![first equation](https://latex.codecogs.com/gif.latex?X%28t%29), using Fourier basis to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots).
 -------------------------------------------------------
 
 # Model input and output
-## Input: a set of coordinates e.g. (1/95, 1/79)
-
-### X:
+## Input: Projection scores ![xi](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots%2C%20%5Cxi_J), ![J](https://latex.codecogs.com/gif.latex?J) is the hyperparameter to choose.
 - 
 ----------------------------------------------------------
 ## Output: Class label.
