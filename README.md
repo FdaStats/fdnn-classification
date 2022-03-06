@@ -6,18 +6,17 @@
 -------------------------------------------------------
 
 # Model input and output
-## Input: Projection scores ![xi](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots%2C%20%5Cxi_J), ![J](https://latex.codecogs.com/gif.latex?J) is the hyperparameter to choose.
-----------------------------------------------------------
-## Output: Class label.
+- Input: Projection scores ![xi](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots%2C%20%5Cxi_J), ![J](https://latex.codecogs.com/gif.latex?J) is the hyperparameter to choose.
+- Output: Class label.
 -------------------------------------------------------------
+
 # Model selection
 ## Cross-validation 
-
 ### Model hyperparameters 
+- J: number of projection scores
 - L: number of layers
 - p: neurons per layer (uniform for all layers)
 - s: sparsity parameter (use dropout)
-- B: max norm of the network weights
 - Batch Size: data dependent
 - Epoch number: data 
 - Activation function: ReLU
