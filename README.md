@@ -20,6 +20,7 @@
 -------------------------------------------------------------
 
 # Other parameters
+- Loss: hinge
 - Dropout rate: data dependent
 - Batch Size: data dependent
 - Epoch number: data dependent
