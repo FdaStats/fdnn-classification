@@ -17,11 +17,14 @@
 - L: number of layers
 - p: neurons per layer (uniform for all layers)
 - s: sparsity parameter (use dropout)
+-------------------------------------------------------------
+
+# Other parameters
 - Batch Size: data dependent
-- Epoch number: data 
+- Epoch number: data dependent
 - Activation function: ReLU
 - Optimizer: Adam 
 -------------------------------------------------------------
 
-# Example
+# Examples
 - 
