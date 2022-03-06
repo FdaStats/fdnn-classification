@@ -16,10 +16,11 @@
 - J: number of projection scores
 - L: number of layers
 - p: neurons per layer (uniform for all layers)
-- s: sparsity parameter (use dropout)
+- B: maximal norm of weights
 -------------------------------------------------------------
 
 # Other parameters
+- Dropout rate: data dependent
 - Batch Size: data dependent
 - Epoch number: data dependent
 - Activation function: ReLU
