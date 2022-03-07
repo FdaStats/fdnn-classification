@@ -2,7 +2,7 @@
 ------------------------------------------------
 
 # Functional data pre-processing
-- Given functional data ![first equation](https://latex.codecogs.com/gif.latex?X%28%5Cpmb%20s%29), first use basis functions to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots) by integration.
+- Given functional data ![first equation](https://latex.codecogs.com/gif.latex?X%28s_1%2C%20%5Cldots%2C%20s_d%29), first use basis functions to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots) by integration.
 -------------------------------------------------------
 
 # Model input and output
