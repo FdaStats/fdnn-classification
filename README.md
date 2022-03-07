@@ -28,8 +28,9 @@
 -------------------------------------------------------------
 
 # Function descriptions
-## "dnn_2d_par.R": parameter selection using the training data.
-## "dnn_2d.R": run fdnn 
+## Two dimensional functional data
+- "dnn_2d_par.R": parameter selection using the training data. More details can be found in comments
+- "dnn_2d.R": functional deep neural netowrks method. More details can be found in comments 
 -------------------------------------------------------------
 
 # Examples
