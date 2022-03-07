@@ -28,6 +28,9 @@
 -------------------------------------------------------------
 
 # Function descriptions
+## One dimensional functional data
+- "dnn_1d_par.R": parameter selection using the training data. More details can be found in comments
+- "dnn_1d.R": functional deep neural netowrks method. More details can be found in comments 
 ## Two dimensional functional data
 - "dnn_2d_par.R": parameter selection using the training data. More details can be found in comments
 - "dnn_2d.R": functional deep neural netowrks method. More details can be found in comments 
