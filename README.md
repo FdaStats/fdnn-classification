@@ -21,7 +21,7 @@
 # Other parameters
 - Loss: hinge
 - Dropout rate: data dependent
-- Batch Size: data dependent
+- Batch size: data dependent
 - Epoch number: data dependent
 - Activation function: ReLU
 - Optimizer: Adam 
