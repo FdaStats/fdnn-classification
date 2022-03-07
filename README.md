@@ -11,15 +11,15 @@
 -------------------------------------------------------------
 
 # Model selection
-## Model hyperparameters 
-- J: number of projection scores
-- L: number of layers
+## Neural network hyperparameters 
+- J: number of projection scores for network inputs
+- L: number of layers 
 - p: neurons per layer (uniform for all layers)
 - B: maximal norm of weights
 -------------------------------------------------------------
 
-# Other parameters
-- Loss: hinge
+# Other hyperparameters
+- Loss function: hinge loss
 - Dropout rate: data dependent
 - Batch size: data dependent
 - Epoch number: data dependent
@@ -29,11 +29,11 @@
 
 # Function descriptions
 ## One dimensional functional data
-- "dnn_1d_par.R": parameter selection using the training data. More details can be found in comments
-- "dnn_1d.R": functional deep neural netowrks method. More details can be found in comments 
+- "dnn_1d_par.R": hyperparameter selection with training data. More details can be found in comments
+- "dnn_1d.R": functional deep neural netowrks. More details can be found in comments 
 ## Two dimensional functional data
-- "dnn_2d_par.R": parameter selection using the training data. More details can be found in comments
-- "dnn_2d.R": functional deep neural netowrks method. More details can be found in comments 
+- "dnn_2d_par.R": hyperparameter selection with training data. More details can be found in comments
+- "dnn_2d.R": functional deep neural netowrks. More details can be found in comments 
 -------------------------------------------------------------
 
 # Examples
