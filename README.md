@@ -7,7 +7,7 @@
 
 # Model input and output
 - Input: Projection scores ![xi](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots%2C%20%5Cxi_J).
-- Output: Binary class label k.
+- Output: Binary class label k={-1, 1}.
 -------------------------------------------------------------
 
 # Model selection
