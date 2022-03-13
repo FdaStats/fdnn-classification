@@ -37,7 +37,7 @@ Fourier=function(s, M, j){
 ##return
 #error: misclassification rate of the testing set
 
-M_dnn=function(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J1, J2, M1, M2, n0.test, n1.test, S1, S2, L, p, B, epoch, batch){
+M_dnn.2d=function(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J1, J2, M1, M2, n0.test, n1.test, S1, S2, L, p, B, epoch, batch){
   J=J1*J2
   
   C0.train=matrix(NA, n0.train, J);C1.train=matrix(NA, n1.train, J)

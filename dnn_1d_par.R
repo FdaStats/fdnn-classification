@@ -29,7 +29,7 @@ Fourier=function(s, M, j){
 ##return
 #error: misclassification rate of the testing set
 
-M_dnn.par=function(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, epoch, batch){
+M_dnn.1d.par=function(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, epoch, batch){
   
   n0.train.cv= floor(0.8*n0.train)
   n1.train.cv= floor(0.8*n1.train)
@@ -73,22 +73,22 @@ M_dnn.par=function(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, epo
           
           for(i in 1:n0.train.cv){
             for(j in 1:J.cv){
-              C0.train.cv[i, j] = mean(D0.train.cv[i,]*phi.cv[j,])
+              C0.train.cv[i, j] = mean(D0.train.cv[i,]*phi.cv[,j])
             }
           }
           for(i in 1:n1.train.cv){
             for(j in 1:J.cv){
-              C1.train.cv[i, j] = mean(D1.train.cv[i,]*phi.cv[j,])
+              C1.train.cv[i, j] = mean(D1.train.cv[i,]*phi.cv[,j])
             }
           }
           for(i in 1:n0.test.cv){
             for(j in 1:J.cv){
-              C0.test.cv[i, j] = mean(D0.test.cv[i,]*phi.cv[j,])
+              C0.test.cv[i, j] = mean(D0.test.cv[i,]*phi.cv[,j])
             }
           }
           for(i in 1:n1.test.cv){
             for(j in 1:J.cv){
-              C1.test.cv[i, j] = mean(D1.test.cv[i,]*phi.cv[j,])
+              C1.test.cv[i, j] = mean(D1.test.cv[i,]*phi.cv[,j])
             }
           }
           

@@ -32,7 +32,7 @@ Fourier=function(s, M, j){
 ##return
 #error: misclassification rate of the testing set
 
-M_dnn.par=function(D0.train, D1.train, n0.train, n1.train, J1, J2, M1, M2, S1, S2, L, p, B, epoch, batch){
+M_dnn.2d.par=function(D0.train, D1.train, n0.train, n1.train, J1, J2, M1, M2, S1, S2, L, p, B, epoch, batch){
   
   n0.train.cv= floor(0.8*n0.train)
   n1.train.cv= floor(0.8*n1.train)
