@@ -1,4 +1,4 @@
-###two-dimensional FDNN classification
+###one-dimensional FDNN classification
 #################################################
 ##########Fourier basis function#################
 #################################################
@@ -19,16 +19,13 @@ Fourier=function(s, M, j){
 #n1.train: training sample size for group 1
 #n0.test: testing sample size for group 0
 #n1.test: testing sample size for group 1
-#M1: number of grid points for the 1st dimension
-#M2: number of grid points for the 2nd dimension
-#S1: a vector of all grid points with length M1 for the 1st dimension
-#S2: a vector of all grid points with length M2 for the 2nd dimension
-#J1: number of truncated eigenvalues for the 1st dimension
-#J2: number of truncated eigenvalues for the 2nd dimension
-#D0.train: training data matrix from group 0, n0.train by M1*M2 matrix
-#D1.train: training data matrix from group 0, n1.train by M1*M2 matrix
-#D0.test: testing data matrix from group 0, n0.test by M1*M2 matrix
-#D1.test: testing data matrix from group 0, n1.test by M1*M2 matrix
+#M: number of grid points
+#S: a vector of all grid points with length M
+#J: number of truncated eigenvalues
+#D0.train: training data matrix from group 0, n0.train by M matrix
+#D1.train: training data matrix from group 0, n1.train by M matrix
+#D0.test: testing data matrix from group 0, n0.test by M matrix
+#D1.test: testing data matrix from group 0, n1.test by M matrix
 #L: length of the DNN
 #p: width of the DNN
 #B: maximal norm for all nodes
@@ -37,26 +34,18 @@ Fourier=function(s, M, j){
 ##return
 #error: misclassification rate of the testing set
 
-M_dnn=function(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J1, J2, M1, M2, n0.test, n1.test, S1, S2, L, p, B, epoch, batch){
-  J=J1*J2
+M_dnn=function(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J, M, n0.test, n1.test, S, L, p, B, epoch, batch){
   
   C0.train=matrix(NA, n0.train, J);C1.train=matrix(NA, n1.train, J)
   C0.test=matrix(NA, n0.test, J);C1.test=matrix(NA, n1.test, J)
   
-  phi1=matrix(NA, M1, J1)
-  for(m in 1:M1){
-    for(j in 1:J1){
-      phi1[m, j]=Fourier(S1[m], M1, j)
-    }
-  }
-  phi2=matrix(NA, M2, J2)
-  for(m in 1:M2){
-    for(j in 1:J2){
-      phi2[m, j]=Fourier(S2[m], M2, j)
+  phi=matrix(NA, M, J)
+  for(m in 1:M){
+    for(j in 1:J){
+      phi[m, j]=Fourier(S[m], M, j)
     }
   }
   
-  phi=kronecker(t(phi2), t(phi1)) 
   
   for(i in 1:n0.train){
     for(j in 1:J){
