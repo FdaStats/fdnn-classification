@@ -96,8 +96,7 @@ M_dnn.1d=function(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J, M
     epochs=epoch, batch_size=batch
   )
   
-  y.pred=model %>% keras::predict_classes(x_test)
-  
+  y.pred=model %>% predict(x_test) %>% `>`(0.5) %>% k_cast("int32")
   
   
   E=1-mean(y.pred==y_test)
