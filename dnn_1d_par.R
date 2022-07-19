@@ -117,7 +117,7 @@ M_dnn.1d.par=function(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, 
             epochs=epoch, batch_size=batch
           )
           
-          y.pred.cv=model %>% predict(x_test.cv) %>% `>`(0.5) %>% k_cast("int32")
+          y.pred.cv=as.numeric(model %>% predict(x_test.cv)>0.5)
           
           
           
