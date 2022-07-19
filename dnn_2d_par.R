@@ -128,7 +128,7 @@ for(hh in 1:l1.1){
             epochs=epoch, batch_size=batch
           )
           
-          y.pred.cv=model %>% predict(x_test.cv) %>% `>`(0.5) %>% k_cast("int32")
+          y.pred.cv=as.numeric(model %>% predict(x_test.cv)>0.5)
           
           
           
