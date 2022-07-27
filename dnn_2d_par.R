@@ -14,10 +14,6 @@ Fourier=function(s, M, j){
   }
 }
 ##input
-#n0.train: training sample size for group 0
-#n1.train: training sample size for group 1
-#M1: number of grid points for the 1st dimension
-#M2: number of grid points for the 2nd dimension
 #S1: a vector of all grid points with length M1 for the 1st dimension
 #S2: a vector of all grid points with length M2 for the 2nd dimension
 #J1: candidate number of truncated eigenvalues for the 1st dimension
@@ -32,7 +28,8 @@ Fourier=function(s, M, j){
 ##return
 #error: misclassification rate of the testing set
 
-M_dnn.2d.par=function(D0.train, D1.train, n0.train, n1.train, J1, J2, M1, M2, S1, S2, L, p, B, epoch, batch){
+M_dnn.2d.par=function(D0.train, D1.train, J1, J2, S1, S2, L, p, B, epoch, batch){
+  M1=length(S1); M2=length(S2); M=M1*M2
   
   n0.train.cv= floor(0.8*n0.train)
   n1.train.cv= floor(0.8*n1.train)
@@ -64,8 +61,6 @@ for(hh in 1:l1.1){
           J1.cv=J1[hh]; J2.cv=J2[ii]; L.cv=L[jj]; p.cv=p[kk]; B.cv=B[ll]
           J.cv=J1.cv*J2.cv
           
-          C0.train.cv=matrix(NA, n0.train.cv, J.cv);C1.train.cv=matrix(NA, n1.train.cv, J.cv)
-          C0.test.cv=matrix(NA, n0.test.cv, J.cv);C1.test.cv=matrix(NA, n1.test.cv, J.cv)
           
           phi1.cv=matrix(NA, M1, J1.cv)
           for(m in 1:M1){
@@ -82,26 +77,9 @@ for(hh in 1:l1.1){
           
           phi.cv=kronecker(t(phi2.cv), t(phi1.cv)) 
           
-          for(i in 1:n0.train.cv){
-            for(j in 1:J.cv){
-              C0.train.cv[i, j] = mean(D0.train.cv[i,]*phi.cv[j,])
-            }
-          }
-          for(i in 1:n1.train.cv){
-            for(j in 1:J.cv){
-              C1.train.cv[i, j] = mean(D1.train.cv[i,]*phi.cv[j,])
-            }
-          }
-          for(i in 1:n0.test.cv){
-            for(j in 1:J.cv){
-              C0.test.cv[i, j] = mean(D0.test.cv[i,]*phi.cv[j,])
-            }
-          }
-          for(i in 1:n1.test.cv){
-            for(j in 1:J.cv){
-              C1.test.cv[i, j] = mean(D1.test.cv[i,]*phi.cv[j,])
-            }
-          }
+          C0.train.cv=(D0.train.cv/M) %*% t(phi.cv); C1.train.cv=(D1.train.cv/M) %*% t(phi.cv)
+          C0.test.cv=(D0.test.cv/M) %*% t(phi.cv); C1.test.cv=(D1.test.cv/M) %*% t(phi.cv)
+  
           
           
           x_train.cv=rbind(C0.train.cv, C1.train.cv); x_test.cv=rbind(C0.test.cv, C1.test.cv)
