@@ -30,6 +30,7 @@ Fourier=function(s, M, j){
 #error: misclassification rate of the testing set
 
 M_dnn.1d=function(D0.train, D1.train, D0.test, D1.test, J, S, L, p, B, epoch, batch){
+  M=length(S)
   
   phi=matrix(NA, M, J)
   for(m in 1:M){
