@@ -37,7 +37,7 @@ source("dnn_1d_par.R")
 source("dnn_1d.R")
 J=c(10,20); L=c(2,3); p=c(100,200); B=c(3,5)
 epoch=100; batch=64
-r1.cv=M_dnn.1d.par(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, epoch, batch)
+r1.cv=M_dnn.1d.par(D0.train, D1.train, J, M, S, L, p, B, epoch, batch)
 optimal=which(r1.cv$error == min(r1.cv$error), arr.ind = TRUE)[1,]
 J=J[optimal[1]]; L=L[optimal[2]]; p=p[optimal[3]]; B=B[optimal[4]]
 r1=M_dnn.1d(D0.train, D1.train ,D0.test, D1.test,J, M, S, L, p, B, epoch, batch)
