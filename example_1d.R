@@ -2,11 +2,10 @@
 library(keras)
 library(tensorflow)
 #Generate data
-#M is sampling freqeuncy
-M=50; n0.train=n1.train=100; n0.test=n1.test=500
+n0.train=n1.train=100; n0.test=n1.test=500
 
 
-S=seq(0, 1, length.out=M)
+S=seq(0, 1, length.out=50)
 #3 terms of spectral decomposition
 NN=3
 #
@@ -41,6 +40,6 @@ epoch=100; batch=64
 r1.cv=M_dnn.1d.par(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, epoch, batch)
 optimal=which(r1.cv$error == min(r1.cv$error), arr.ind = TRUE)[1,]
 J=J[optimal[1]]; L=L[optimal[2]]; p=p[optimal[3]]; B=B[optimal[4]]
-r1=M_dnn.1d(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J, M, n0.test, n1.test, S, L, p, B, epoch, batch)
+r1=M_dnn.1d(D0.train, D1.train ,D0.test, D1.test,J, M, S, L, p, B, epoch, batch)
 r1$error
 
