@@ -62,8 +62,8 @@ M_dnn.1d.par=function(D0.train, D1.train, J, M, S, L, p, B, epoch, batch){
             }
           }
           
-          C0.train.cv=lapply(D0.train.cv, FUN = function(x) (x/M) %*% phi.cv); C1.train.cv=lapply(D1.train.cv, FUN = function(x) (x/M) %*% phi.cv)
-          C0.test.cv=lapply(D0.test.cv, FUN = function(x) (x/M) %*% phi.cv); C1.test.cv=lapply(D1.test.cv, FUN = function(x) (x/M) %*% phi.cv)
+          C0.train.cv=(D0.train.cv/M) %*% phi.cv; C1.train.cv=(D1.train.cv/M) %*% phi.cv
+          C0.test.cv=(D0.test.cv/M) %*% phi.cv; C1.test.cv=(D1.test.cv/M) %*% phi.cv
           
           
           x_train.cv=rbind(C0.train.cv, C1.train.cv); x_test.cv=rbind(C0.test.cv, C1.test.cv)
