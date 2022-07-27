@@ -41,10 +41,8 @@ M_dnn.1d=function(D0.train, D1.train, D0.test, D1.test, J, S, L, p, B, epoch, ba
   
   n0.train=dim(D0.train)[1];n1.train=dim(D1.train)[1];n0.test=dim(D0.test)[1];n1.test=dim(D1.test)[1]
   
-  C0.train=lapply(D0.train, FUN = function(x) (x/M) %*% phi)
-  C1.train=lapply(D1.train, FUN = function(x) (x/M) %*% phi)
-  C0.test=lapply(D0.test, FUN = function(x) (x/M) %*% phi)
-  C1.test=lapply(D1.test, FUN = function(x) (x/M) %*% phi)
+  C0.train=(D0.train/M) %*% phi; C1.train=(D1.train/M) %*% phi
+  C0.test=(D0.test/M) %*% phi; C1.test=(D1.test/M) %*% phi
   
   
   
