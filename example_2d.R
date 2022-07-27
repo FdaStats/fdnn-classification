@@ -2,12 +2,11 @@
 library(keras)
 library(tensorflow)
 #Generate data
-#M1,M2 are sampling freqeuncy on two dimensions
-M1=50; M2=50; n0.train=n1.train=100; n0.test=n1.test=500
+n0.train=n1.train=100; n0.test=n1.test=500
 
 
-S1=seq(0, 1, length.out=M1)
-S2=seq(0, 1, length.out=M2)
+S1=seq(0, 1, length.out=50)
+S2=seq(0, 1, length.out=50)
 #4 terms of spectral decomposition
 NN=4
 #
@@ -41,9 +40,9 @@ source("dnn_2d_par.R")
 source("dnn_2d.R")
 J1=J2=c(5,10); L=c(2,3); p=c(100,200); B=c(3,5)
 epoch=100; batch=64
-r1.cv=M_dnn.2d.par(D0.train, D1.train, n0.train, n1.train, J1, J2, M1, M2, S1, S2, L, p, B, epoch, batch)
+r1.cv=M_dnn.2d.par(D0.train, D1.train, J1, J2, S1, S2, L, p, B, epoch, batch)
 optimal=which(r1.cv$error == min(r1.cv$error), arr.ind = TRUE)[1,]
 J1=J1[optimal[1]]; J2=J2[optimal[2]]; L=L[optimal[3]]; p=p[optimal[4]]; B=B[optimal[5]]
-r1=M_dnn.2d(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J1, J2, M1, M2, n0.test, n1.test, S1, S2, L, p, B, epoch, batch)
+r1=M_dnn.2d(D0.train, D1.train, D0.test, D1.test, J1, J2, S1, S2, L, p, B, epoch, batch)
 r1$error
 
