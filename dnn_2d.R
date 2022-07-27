@@ -15,12 +15,6 @@ Fourier=function(s, M, j){
 }
 
 ##input
-#n0.train: training sample size for group 0
-#n1.train: training sample size for group 1
-#n0.test: testing sample size for group 0
-#n1.test: testing sample size for group 1
-#M1: number of grid points for the 1st dimension
-#M2: number of grid points for the 2nd dimension
 #S1: a vector of all grid points with length M1 for the 1st dimension
 #S2: a vector of all grid points with length M2 for the 2nd dimension
 #J1: number of truncated eigenvalues for the 1st dimension
@@ -37,11 +31,8 @@ Fourier=function(s, M, j){
 ##return
 #error: misclassification rate of the testing set
 
-M_dnn.2d=function(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J1, J2, M1, M2, n0.test, n1.test, S1, S2, L, p, B, epoch, batch){
-  J=J1*J2
-  
-  C0.train=matrix(NA, n0.train, J);C1.train=matrix(NA, n1.train, J)
-  C0.test=matrix(NA, n0.test, J);C1.test=matrix(NA, n1.test, J)
+M_dnn.2d=function(D0.train, D1.train, D0.test, D1.test, J1, J2, S1, S2, L, p, B, epoch, batch){
+  J=J1*J2; M1=length(S1); M2=length(S2)
   
   phi1=matrix(NA, M1, J1)
   for(m in 1:M1){
@@ -58,27 +49,8 @@ M_dnn.2d=function(D0.train, D1.train ,D0.test, D1.test, n0.train, n1.train, J1, 
   
   phi=kronecker(t(phi2), t(phi1)) 
   
-  for(i in 1:n0.train){
-    for(j in 1:J){
-      C0.train[i, j] = mean(D0.train[i,]*phi[j,])
-    }
-  }
-  for(i in 1:n1.train){
-    for(j in 1:J){
-      C1.train[i, j] = mean(D1.train[i,]*phi[j,])
-    }
-  }
-  for(i in 1:n0.test){
-    for(j in 1:J){
-      C0.test[i, j] = mean(D0.test[i,]*phi[j,])
-    }
-  }
-  for(i in 1:n1.test){
-    for(j in 1:J){
-      C1.test[i, j] = mean(D1.test[i,]*phi[j,])
-    }
-  }
-  
+  C0.train=(D0.train/M) %*% t(phi); C1.train=(D1.train/M) %*% t(phi)
+  C0.test=(D0.test/M) %*% t(phi); C1.test=(D1.test/M) %*% t(phi)
   
   
   x_train=rbind(C0.train, C1.train); y_train=c(rep(0, n0.train), rep(1, n1.train))
