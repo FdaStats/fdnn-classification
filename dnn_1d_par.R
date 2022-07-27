@@ -14,9 +14,6 @@ Fourier=function(s, M, j){
   }
 }
 ##input
-#n0.train: training sample size for group 0
-#n1.train: training sample size for group 1
-#M: number of grid points
 #S: a vector of all grid points with length M
 #J: candidate number of truncated eigenvalues
 #D0.train: training data matrix from group 0, n0.train by M matrix
@@ -29,20 +26,18 @@ Fourier=function(s, M, j){
 ##return
 #error: misclassification rate of the testing set
 
-M_dnn.1d.par=function(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, epoch, batch){
+M_dnn.1d.par=function(D0.train, D1.train, J, M, S, L, p, B, epoch, batch){
+  M=length(S)
   
-  n0.train.cv= floor(0.8*n0.train)
-  n1.train.cv= floor(0.8*n1.train)
-  n0.test.cv= n0.train-n0.train.cv
-  n1.test.cv= n1.train-n1.train.cv
+  n0.train=dim(D0.train)[1];n1.train=dim(D1.train)[1]
   
-  ind0.train=sample(1:n0.train,n0.train.cv)
-  ind1.train=sample(1:n1.train,n1.train.cv)
+  n0.train.cv= floor(0.8*n0.train); n1.train.cv= floor(0.8*n1.train)
+  n0.test.cv= n0.train-n0.train.cv; n1.test.cv= n1.train-n1.train.cv
+  
+  ind0.train=sample(1:n0.train,n0.train.cv); ind1.train=sample(1:n1.train,n1.train.cv)
     
-  D0.train.cv=D0.train[ind0.train,]
-  D1.train.cv=D1.train[ind1.train,]
-  D0.test.cv=D0.train[-ind0.train,]
-  D1.test.cv=D1.train[-ind1.train,]
+  D0.train.cv=D0.train[ind0.train,]; D1.train.cv=D1.train[ind1.train,]
+  D0.test.cv=D0.train[-ind0.train,]; D1.test.cv=D1.train[-ind1.train,]
   
   y_train.cv=c(rep(0, n0.train.cv), rep(1, n1.train.cv))
   y_test.cv=c(rep(0, n0.test.cv), rep(1, n1.test.cv))
@@ -59,8 +54,6 @@ M_dnn.1d.par=function(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, 
         for(ll in 1:l4){
           J.cv=J[ii]; L.cv=L[jj]; p.cv=p[kk]; B.cv=B[ll]
           
-          C0.train.cv=matrix(NA, n0.train.cv, J.cv);C1.train.cv=matrix(NA, n1.train.cv, J.cv)
-          C0.test.cv=matrix(NA, n0.test.cv, J.cv);C1.test.cv=matrix(NA, n1.test.cv, J.cv)
           
           phi.cv=matrix(NA, M, J.cv)
           for(m in 1:M){
@@ -69,28 +62,8 @@ M_dnn.1d.par=function(D0.train, D1.train, n0.train, n1.train, J, M, S, L, p, B, 
             }
           }
           
-          
-          
-          for(i in 1:n0.train.cv){
-            for(j in 1:J.cv){
-              C0.train.cv[i, j] = mean(D0.train.cv[i,]*phi.cv[,j])
-            }
-          }
-          for(i in 1:n1.train.cv){
-            for(j in 1:J.cv){
-              C1.train.cv[i, j] = mean(D1.train.cv[i,]*phi.cv[,j])
-            }
-          }
-          for(i in 1:n0.test.cv){
-            for(j in 1:J.cv){
-              C0.test.cv[i, j] = mean(D0.test.cv[i,]*phi.cv[,j])
-            }
-          }
-          for(i in 1:n1.test.cv){
-            for(j in 1:J.cv){
-              C1.test.cv[i, j] = mean(D1.test.cv[i,]*phi.cv[,j])
-            }
-          }
+          C0.train.cv=lapply(D0.train.cv, FUN = function(x) (x/M) %*% phi.cv); C1.train.cv=lapply(D1.train.cv, FUN = function(x) (x/M) %*% phi.cv)
+          C0.test.cv=lapply(D0.test.cv, FUN = function(x) (x/M) %*% phi.cv); C1.test.cv=lapply(D1.test.cv, FUN = function(x) (x/M) %*% phi.cv)
           
           
           x_train.cv=rbind(C0.train.cv, C1.train.cv); x_test.cv=rbind(C0.test.cv, C1.test.cv)
