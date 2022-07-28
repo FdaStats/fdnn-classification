@@ -34,7 +34,7 @@ r1.v=M_dnn.1d.par(D0.train, D1.train, J, M, S, L, p, B, epoch=100, batch=64)
 optimal=which(r1.v$error == min(r1.v$error), arr.ind = TRUE)[1,]
 J=J[optimal[1]]; L=L[optimal[2]]; p=p[optimal[3]]; B=B[optimal[4]]
 #fit fdnn model
-r1=M_dnn.1d(D0.train, D1.train ,D0.test, D1.test, J, S, L, p, B, epoch, batch)
+r1=M_dnn.1d(D0.train, D1.train ,D0.test, D1.test, J, S, L, p, B, epoch=100, batch=64)
 #demonstrate error
 r1$error
 
