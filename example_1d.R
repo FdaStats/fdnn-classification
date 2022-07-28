@@ -1,4 +1,4 @@
-##two-dimensional functional data example
+##one-dimensional functional data example
 library(keras)
 library(tensorflow)
 #Generate data
