@@ -2,11 +2,11 @@
 ------------------------------------------------
 
 # Functional data pre-processing
-- Given functional data ![first equation](https://latex.codecogs.com/gif.latex?X%28s_1%2C%20%5Cldots%2C%20s_d%29), first use basis functions to extract projection scores ![second equation](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots) by integration.
+- Given functional data $X (s_{1}, \dots, s_{d})$, first use basis functions to extract projection scores $\xi_{1}, \xi_{2}, \dots$ by integration.
 -------------------------------------------------------
 
 # Model input and output
-- Input: Projection scores ![xi](https://latex.codecogs.com/gif.latex?%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cldots%2C%20%5Cxi_J).
+- Input: Projection scores $\xi_{1}, \xi_{2}, \dots, \xi_{J}$.
 - Output: Binary class label k={-1, 1}.
 -------------------------------------------------------------
 
@@ -37,8 +37,8 @@
 -------------------------------------------------------------
 
 # Examples
-- "example_1d.R": ![f](https://latex.codecogs.com/gif.latex?X%28s%29%3D%5Csum_%7Bj%3D1%7D%5E3%5Cxi_j%5Cpsi_j%28s%29), ![range](https://latex.codecogs.com/gif.latex?0%5Cleq%20s%5Cleq%201), where ![psi1](https://latex.codecogs.com/gif.latex?%5Cpsi_1%28s%29%3D%5Clog%28s&plus;2%29), ![psi2](https://latex.codecogs.com/gif.latex?%5Cpsi_1%28s%29%3Ds), ![psi3](https://latex.codecogs.com/gif.latex?%5Cpsi_1%28s%29%3Ds%5E3). Under class k, generate independently ![dis](https://latex.codecogs.com/gif.latex?%28%5Cxi_1%2C%20%5Cxi_2%2C%20%5Cxi_3%29%5E%5Ctop%5Csim%20N%28%5Cpmb%5Cmu_k%2C%20%5Cpmb%5CSigma_k%29),  
-where ![mu1](https://latex.codecogs.com/gif.latex?%5Cpmb%5Cmu_1%20%3D%20%28-1%2C2%2C-3%29%5E%5Ctop), ![sigma1](https://latex.codecogs.com/gif.latex?%5Cpmb%5CSigma_%7B1%7D%20%3D%20%5Ctext%7Bdiag%7D%28%5Cfrac%7B3%7D%7B5%7D%2C%20%5Cfrac%7B2%7D%7B5%7D%2C%20%5Cfrac%7B1%7D%7B5%7D%29),  ![mu2](https://latex.codecogs.com/gif.latex?%5Cpmb%5Cmu_%7B-1%7D%20%3D%20%28-%5Cfrac%7B1%7D%7B2%7D%2C%20%5Cfrac%7B5%7D%7B2%7D%2C%20-%5Cfrac%7B5%7D%7B2%7D%29%5E%5Ctop),  ![sigma2](https://latex.codecogs.com/gif.latex?%5Cpmb%5CSigma_%7B-1%7D%20%3D%20%5Ctext%7Bdiag%7D%28%5Cfrac%7B9%7D%7B10%7D%2C%20%5Cfrac%7B1%7D%7B2%7D%2C%20%5Cfrac%7B3%7D%7B10%7D%29). 
+- "example_1d.R": $X(s) = \sum_{j = 1}^{3} \xi_{j} \psi_{j}(s), \ 0 \le s \le 1$, where $\psi_{1}(s) = \log(s + 2)$, $\ \psi_{1}(s) = s$, $\ \psi_{1}(s) = s ^ 3$. Under class k, generate independently $(\xi_{1}, \xi_{2}, \xi_{3}) ^ \mathrm{T} \sim N(\mathbf{\mu}_{k}, \mathbf{\Sigma}_{k})$,  
+where $\mathbf{\mu}_{1} = (-1, 2, -3) ^ \mathrm{T}$, $\mathbf{\Sigma}_{1} = \mathrm{diag}(\frac{3}{5}, \frac{2}{5}, \frac{1}{5})$ , $\mathbf{\mu}_{-1} = (-\frac{1}{2}, \frac{5}{2}, -\frac{5}{2}) ^ \mathrm{T}$, $\mathbf{\Sigma}_{-1} = \mathrm{diag}(\frac{9}{10}, \frac{1}{2}, \frac{3}{10})$. 
 
-- "example_2d.R": ![f](https://latex.codecogs.com/gif.latex?X%28s_1%2Cs_2%29%3D%20%5Csum_%7Bj%3D1%7D%5E%7B4%7D%20%5Cxi_%7Bj%7D%5Cpsi_j%28s_1%2Cs_2%29), ![range](https://latex.codecogs.com/gif.latex?0%5Cle%20s_1%2Cs_2%5Cle1), where ![psi1](https://latex.codecogs.com/gif.latex?%5Cpsi_1%28s_1%2C%20s_2%29%3Ds_1s_2), ![psi2](https://latex.codecogs.com/gif.latex?%5Cpsi_2%28s_1%2C%20s_2%29%3Ds_1s_2%5E2), ![psi3](https://latex.codecogs.com/gif.latex?%5Cpsi_3%28s_1%2C%20s_2%29%3Ds_1%5E2s_2), ![psi4](https://latex.codecogs.com/gif.latex?%5Cpsi_4%28s_1%2C%20s_2%29%3Ds_1%5E2s_2%5E2). Under class k, generate independently ![dis](https://latex.codecogs.com/gif.latex?%28%5Cxi_1%2C%5Cxi_2%2C%5Cxi_3%2C%5Cxi_4%29%5E%7B%5Ctop%7D%5Csim%20N%28%5Cpmb%7B%5Cmu%7D_k%2C%5Cpmb%7B%5CSigma%7D_k%29),  
-where ![mu1](https://latex.codecogs.com/gif.latex?%5Cpmb%5Cmu_1%3D%288%2C-6%2C4%2C-2%29%5E%5Ctop), ![sigma1](https://latex.codecogs.com/gif.latex?%5Cpmb%5CSigma_1%3D%20%5Ctext%7Bdiag%7D%5Cleft%28%208%2C%206%2C%204%2C%202%5Cright%29),  ![mu2](https://latex.codecogs.com/gif.latex?%5Cpmb%5Cmu_%7B-1%7D%3D%20%5Cleft%28-%5Cfrac%7B7%7D%7B2%7D%2C%20-%5Cfrac%7B5%7D%7B2%7D%2C%20%5Cfrac%7B3%7D%7B2%7D%2C%20-%5Cfrac%7B1%7D%7B2%7D%5Cright%29%5E%5Ctop),  ![sigma2](https://latex.codecogs.com/gif.latex?%5Cpmb%5CSigma_%7B-1%7D%3D%5Ctext%7Bdiag%7D%5Cleft%28%20%5Cfrac%7B9%7D%7B2%7D%2C%20%5Cfrac%7B7%7D%7B2%7D%2C%20%5Cfrac%7B5%7D%7B2%7D%2C%20%5Cfrac%7B3%7D%7B2%7D%5Cright%29). 
+- "example_2d.R": $X(s_{1}, s_{2}) = \sum_{j = 1}^{4} \xi_{j} \psi_{j}(s_{1}, s_{2}), \ 0 \le s_{1}, s_{2} \le 1$, where $\psi_{1}(s_{1}, s_{2}) = s_{1}s_{2}$, $\psi_{2}(s_{1}, s_{2}) = s_{1}s_{2} ^ 2$, $\psi_{3}(s_{1}, s_{2}) = s_{1} ^ {2} s_{2}$, $\psi_{4}(s_{1}, s_{2}) = s_{1} ^ {2} s_{2} ^ {2}$. Under class k, generate independently $(\xi_{1}, \xi_{2}, \xi_{3}, \xi_{4}) ^ \mathrm{T} \sim N(\mathbf{\mu}_{k}, \mathbf{\Sigma}_{k})$,  
+where $\mathbf{\mu}_{1} = (8, -6, 4, -2) ^ \mathbf{T}$, $\mathbf{\Sigma}_{1} = \mathrm{diag}(8, 6, 4, 2)$, $\mathbf{\mu}_{-1} = (-\frac{7}{2}, -\frac{5}{2}, \frac{3}{2}, -\frac{1}{2}) ^ \mathbf{T}$, $\mathbf{\Sigma}_{-1} = \mathrm{diag}(\frac{9}{2}, \frac{7}{2}, \frac{5}{2}, \frac{3}{2}$. 
