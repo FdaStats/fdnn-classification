@@ -37,8 +37,9 @@
 -------------------------------------------------------------
 
 # Examples
-- "example_1d.R": $X(s) = \sum_{j = 1}^{3} \xi_{j} \psi_{j}(s), \ 0 \le s \le 1$, where $\psi_{1}(s) = \log(s + 2)$, $\ \psi_{1}(s) = s$, $\ \psi_{1}(s) = s ^ 3$. Under class k, generate independently $(\xi_{1}, \xi_{2}, \xi_{3}) ^ \mathrm{T} \sim N(\mathbf{\mu}_{k}, \mathbf{\Sigma}_{k})$,  
+- "example_1d.R": $X(s) = \sum_{j = 1}^{3} \xi_{j} \psi_{j}(s), \ 0 \le s \le 1$, where $\psi_{1}(s) = \log(s + 2)$, $\psi_{1}(s) = s$, $\psi_{1}(s) = s ^ 3$. Under class k, generate independently $(\xi_{1}, \xi_{2}, \xi_{3}) ^ \mathrm{T} \sim N(\mathbf{\mu}_{k}, \mathbf{\Sigma}_{k})$,  
 where $\mathbf{\mu}_{1} = (-1, 2, -3) ^ \mathrm{T}$, $\mathbf{\Sigma}_{1} = \mathrm{diag}(\frac{3}{5}, \frac{2}{5}, \frac{1}{5})$ , $\mathbf{\mu}_{-1} = (-\frac{1}{2}, \frac{5}{2}, -\frac{5}{2}) ^ \mathrm{T}$, $\mathbf{\Sigma}_{-1} = \mathrm{diag}(\frac{9}{10}, \frac{1}{2}, \frac{3}{10})$. 
 
+
 - "example_2d.R": $X(s_{1}, s_{2}) = \sum_{j = 1}^{4} \xi_{j} \psi_{j}(s_{1}, s_{2}), \ 0 \le s_{1}, s_{2} \le 1$, where $\psi_{1}(s_{1}, s_{2}) = s_{1}s_{2}$, $\psi_{2}(s_{1}, s_{2}) = s_{1}s_{2} ^ 2$, $\psi_{3}(s_{1}, s_{2}) = s_{1} ^ {2} s_{2}$, $\psi_{4}(s_{1}, s_{2}) = s_{1} ^ {2} s_{2} ^ {2}$. Under class k, generate independently $(\xi_{1}, \xi_{2}, \xi_{3}, \xi_{4}) ^ \mathrm{T} \sim N(\mathbf{\mu}_{k}, \mathbf{\Sigma}_{k})$,  
-where $\mathbf{\mu}_{1} = (8, -6, 4, -2) ^ \mathbf{T}$, $\mathbf{\Sigma}_{1} = \mathrm{diag}(8, 6, 4, 2)$, $\mathbf{\mu}_{-1} = (-\frac{7}{2}, -\frac{5}{2}, \frac{3}{2}, -\frac{1}{2}) ^ \mathbf{T}$, $\mathbf{\Sigma}_{-1} = \mathrm{diag}(\frac{9}{2}, \frac{7}{2}, \frac{5}{2}, \frac{3}{2}$. 
+where $\mathbf{\mu}_{1} = (8, -6, 4, -2) ^ \mathbf{T}$, $\mathbf{\Sigma}_{1} = \mathrm{diag}(8, 6, 4, 2)$, $\mathbf{\mu}_{-1} = (-\frac{7}{2}, -\frac{5}{2}, \frac{3}{2}, -\frac{1}{2}) ^ \mathbf{T}$, $\mathbf{\Sigma}_{-1} = \mathrm{diag}(\frac{9}{2}, \frac{7}{2}, \frac{5}{2}, \frac{3}{2})$. 
